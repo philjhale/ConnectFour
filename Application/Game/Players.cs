@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace ConnectFour.Application.Game
@@ -8,12 +9,12 @@ namespace ConnectFour.Application.Game
 		private readonly List<Player> players;
 		private int currentPlayerIndex;
 
-		public Players(params Player[] player)
+		public Players(List<Player> players)
 		{
-			players = new List<Player>();
-			players.AddRange(player);
+			if (players == null || players.Count == 0) throw new ArgumentException("You must supply some players", "players");
+
+			this.players = players;
 			currentPlayerIndex = -1;
-			// TODO Throw exception if players list length is 0?
 		}
 
 		public IEnumerator<Player> GetEnumerator()

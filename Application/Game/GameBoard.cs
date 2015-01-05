@@ -12,12 +12,14 @@ namespace ConnectFour.Application.Game
 		private int lastDroppedX = -1;
 		private int lastDroppedY = -1;
 
-		public GameBoard()
+		public GameBoard(int numberOfColumns, int numberOfRows)
 		{
+			if (numberOfColumns < 4) throw new ArgumentException("You need at least four columns", "numberOfColumns");
+			if (numberOfRows < 4) throw new ArgumentException("You need at least four rows", "numberOfRows");
+
 			solver = new GenericSequenceConnectFourSolver(this);
-			// Hard coded for now but could be passed in
-			TotalRows = 7;
-			TotalColumns = 6;
+			TotalRows = numberOfRows;
+			TotalColumns = numberOfColumns;
 			grid = new DiscColour[TotalColumns, TotalRows]; 
 
 			SetAllToNone();

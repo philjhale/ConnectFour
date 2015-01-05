@@ -11,7 +11,7 @@ namespace ConnectFour.Tests
 		[SetUp]
 		public void SetUp()
 		{
-			gameBoard = new GameBoard();	
+			gameBoard = new GameBoard(7, 6);	
 		}
 
 		[Test]

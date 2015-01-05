@@ -1,4 +1,6 @@
-﻿using ConnectFour.Application.Views;
+﻿using System;
+using System.Collections.Generic;
+using ConnectFour.Application.Views;
 
 namespace ConnectFour.Application.Game
 {
@@ -8,14 +10,16 @@ namespace ConnectFour.Application.Game
 		private readonly Players players;
 		private readonly IGameBoardView gameBoardView;
 		
-		public Game(IGameBoardView gameBoardView, GameBoard gameBoard)
+		public Game(IGameBoardView gameBoardView, GameBoard gameBoard, List<Player> players)
 		{
+			if (gameBoardView == null) throw new ArgumentNullException("Parameter cannot be null", "gameBoardView");
+			if (gameBoard == null) throw new ArgumentNullException("Parameter cannot be null", "gameBoard");
+			if (players == null || players.Count < 2) throw new ArgumentException("Two players are required", "players");
+
 			this.gameBoard = gameBoard;
 			this.gameBoardView = gameBoardView;
 			
-			var humanPlayer = new ConsolePlayer("Console player", DiscColour.Red);
-			var computerPlayer = new AutomatedPlayer("Dr Robotnic", DiscColour.Yellow);
-			players = new Players(humanPlayer, computerPlayer);
+			this.players = new Players(players);
 		}
 
 		public void Play()
