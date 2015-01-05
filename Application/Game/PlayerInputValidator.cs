@@ -2,11 +2,11 @@
 {
 	public static class PlayerInputValidator
 	{
-		public static int GetValidColumn(Player player, Board board)
+		public static int GetValidColumn(Player player, GameBoard gameBoard)
 		{
 			int columnNumber;
 
-			while (!IsValidInput(player.GetDropColumnInput(), board, out columnNumber))
+			while (!IsValidInput(player.GetDropColumnInput(), gameBoard, out columnNumber))
 			{
 				// Probably should have some way of reporting bad input
 			}
@@ -14,12 +14,12 @@
 			return columnNumber;
 		}
 
-		private static bool IsValidInput(string input, Board board, out int columnNumber)
+		private static bool IsValidInput(string input, GameBoard gameBoard, out int columnNumber)
 		{
 			if (!int.TryParse(input, out columnNumber))
 				return false;
 
-			if (!board.CanBeDroppedInto(columnNumber))
+			if (!gameBoard.CanBeDroppedInto(columnNumber))
 				return false;
 
 			return true;

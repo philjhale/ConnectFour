@@ -7,11 +7,12 @@ namespace ConnectFour.Console
 	{
 		static void Main(string[] args)
 		{
-			var board = new Board();
-			var boardView = new ConsoleBoardView(board);
-			var gameController = new GameController(boardView, board);
+			// TODO Encapsulate this into a Game object and GameSettings object
+			var board = new GameBoard();
+			var boardView = new ConsoleGameBoardView(board);
+			var game = new Game(boardView, board);
 
-			gameController.Play();
+			game.Play();
 
 			System.Console.ReadKey();
 		}

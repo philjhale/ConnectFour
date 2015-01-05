@@ -3,13 +3,13 @@ using ConnectFour.Application.Game;
 
 namespace ConnectFour.Application.Views
 {
-	public class ConsoleBoardView : IBoardView
+	public class ConsoleGameBoardView : IGameBoardView
 	{
-		private readonly Board board;
+		private readonly GameBoard gameBoard;
 
-		public ConsoleBoardView(Board board)
+		public ConsoleGameBoardView(GameBoard gameBoard)
 		{
-			this.board = board;
+			this.gameBoard = gameBoard;
 		}
 
 		public void ShowMessage(string message)
@@ -19,19 +19,19 @@ namespace ConnectFour.Application.Views
 
 		public void Refresh()
 		{
-			for(int x = 1; x <= board.TotalColumns ; x++)
+			for(int x = 1; x <= gameBoard.TotalColumns ; x++)
 			{
 				Console.Write("{0}\t", x);
 			}
 			Console.WriteLine();
 
 			// Loop through each row starting at top left
-			for(int y = board.TotalRows; y > 0 ; y--)
+			for(int y = gameBoard.TotalRows; y > 0 ; y--)
 			{
-				for(int x = 1; x <= board.TotalColumns ; x++)
+				for(int x = 1; x <= gameBoard.TotalColumns ; x++)
 				{
-					if (board.DoesDiscExistAt(x, y))
-						Console.Write(GetDiscColourAsString(board.GetDiscAt(x, y)));
+					if (gameBoard.DoesDiscExistAt(x, y))
+						Console.Write(GetDiscColourAsString(gameBoard.GetDiscAt(x, y)));
 					else
 						Console.Write("-");
 

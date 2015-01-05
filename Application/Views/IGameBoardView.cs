@@ -1,6 +1,6 @@
 ﻿namespace ConnectFour.Application.Views
 {
-	public interface IBoardView
+	public interface IGameBoardView
 	{
 		void ShowMessage(string message);
 		void Refresh();
