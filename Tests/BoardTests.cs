@@ -6,75 +6,75 @@ namespace ConnectFour.Tests
 	[TestFixture]
     public class BoardTests
     {
-		Board board;
+		GameBoard gameBoard;
 
 		[SetUp]
 		public void SetUp()
 		{
-			board = new Board();	
+			gameBoard = new GameBoard(7, 6);	
 		}
 
 		[Test]
 		public void HasConnectFour_ThreeVertical_ReturnsFalse()
 		{
-			board.DropDisc(1, DiscColour.Red);
-			board.DropDisc(1, DiscColour.Red);
-			board.DropDisc(1, DiscColour.Red);
+			gameBoard.DropDisc(1, DiscColour.Red);
+			gameBoard.DropDisc(1, DiscColour.Red);
+			gameBoard.DropDisc(1, DiscColour.Red);
 
-			Assert.IsFalse(board.HasConnectFour());
+			Assert.IsFalse(gameBoard.HasConnectFour());
 		}
 
 		[Test]
 		public void HasConnectFour_FourVertical_ReturnsTrue()
 		{
-			board.DropDisc(1, DiscColour.Red);
-			board.DropDisc(1, DiscColour.Red);
-			board.DropDisc(1, DiscColour.Red);
-			board.DropDisc(1, DiscColour.Red);
+			gameBoard.DropDisc(1, DiscColour.Red);
+			gameBoard.DropDisc(1, DiscColour.Red);
+			gameBoard.DropDisc(1, DiscColour.Red);
+			gameBoard.DropDisc(1, DiscColour.Red);
 
-			Assert.IsTrue(board.HasConnectFour());
+			Assert.IsTrue(gameBoard.HasConnectFour());
 		}
 
 		[Test]
 		public void HasConnectFour_ThreeHorizontalStartingFromPosition1_ReturnsFalse()
 		{
-			board.DropDisc(1, DiscColour.Red);
-			board.DropDisc(2, DiscColour.Red);
-			board.DropDisc(3, DiscColour.Red);
+			gameBoard.DropDisc(1, DiscColour.Red);
+			gameBoard.DropDisc(2, DiscColour.Red);
+			gameBoard.DropDisc(3, DiscColour.Red);
 
-			Assert.IsFalse(board.HasConnectFour());
+			Assert.IsFalse(gameBoard.HasConnectFour());
 		}
 
 		[Test]
 		public void HasConnectFour_FourHorizontalStartingFromPosition1_ReturnsTrue()
 		{
-			board.DropDisc(1, DiscColour.Red);
-			board.DropDisc(2, DiscColour.Red);
-			board.DropDisc(3, DiscColour.Red);
-			board.DropDisc(4, DiscColour.Red);
+			gameBoard.DropDisc(1, DiscColour.Red);
+			gameBoard.DropDisc(2, DiscColour.Red);
+			gameBoard.DropDisc(3, DiscColour.Red);
+			gameBoard.DropDisc(4, DiscColour.Red);
 
-			Assert.IsTrue(board.HasConnectFour());
+			Assert.IsTrue(gameBoard.HasConnectFour());
 		}
 
 		[Test]
 		public void HasConnectFour_ThreeHorizontalStartingFromPosition2_ReturnsFalse()
 		{
-			board.DropDisc(2, DiscColour.Red);
-			board.DropDisc(3, DiscColour.Red);
-			board.DropDisc(4, DiscColour.Red);
+			gameBoard.DropDisc(2, DiscColour.Red);
+			gameBoard.DropDisc(3, DiscColour.Red);
+			gameBoard.DropDisc(4, DiscColour.Red);
 
-			Assert.IsFalse(board.HasConnectFour());
+			Assert.IsFalse(gameBoard.HasConnectFour());
 		}
 
 		[Test]
 		public void HasConnectFour_FourHorizontalStartingFromPosition2_ReturnsTrue()
 		{
-			board.DropDisc(2, DiscColour.Red);
-			board.DropDisc(3, DiscColour.Red);
-			board.DropDisc(4, DiscColour.Red);
-			board.DropDisc(5, DiscColour.Red);
+			gameBoard.DropDisc(2, DiscColour.Red);
+			gameBoard.DropDisc(3, DiscColour.Red);
+			gameBoard.DropDisc(4, DiscColour.Red);
+			gameBoard.DropDisc(5, DiscColour.Red);
 
-			Assert.IsTrue(board.HasConnectFour());
+			Assert.IsTrue(gameBoard.HasConnectFour());
 		}
 
 
@@ -88,27 +88,27 @@ namespace ConnectFour.Tests
 		[Test]
 		public void HasConnectFour_ThreeDiagonalBottomLeftToTopRight_ReturnsFalse()
 		{
-			board.DropDisc(1, DiscColour.Yellow);
-			board.DropDisc(2, DiscColour.Yellow);
-			board.DropDisc(3, DiscColour.Red);
-			board.DropDisc(4, DiscColour.Yellow);
-			board.DropDisc(5, DiscColour.Red);
+			gameBoard.DropDisc(1, DiscColour.Yellow);
+			gameBoard.DropDisc(2, DiscColour.Yellow);
+			gameBoard.DropDisc(3, DiscColour.Red);
+			gameBoard.DropDisc(4, DiscColour.Yellow);
+			gameBoard.DropDisc(5, DiscColour.Red);
 
-			board.DropDisc(2, DiscColour.Red);
-			board.DropDisc(3, DiscColour.Yellow);
-			board.DropDisc(4, DiscColour.Red);
-			board.DropDisc(5, DiscColour.Yellow);
+			gameBoard.DropDisc(2, DiscColour.Red);
+			gameBoard.DropDisc(3, DiscColour.Yellow);
+			gameBoard.DropDisc(4, DiscColour.Red);
+			gameBoard.DropDisc(5, DiscColour.Yellow);
 
-			board.DropDisc(3, DiscColour.Red);
-			board.DropDisc(4, DiscColour.Red);
-			board.DropDisc(5, DiscColour.Yellow);
+			gameBoard.DropDisc(3, DiscColour.Red);
+			gameBoard.DropDisc(4, DiscColour.Red);
+			gameBoard.DropDisc(5, DiscColour.Yellow);
 
-			board.DropDisc(4, DiscColour.Red);
-			board.DropDisc(5, DiscColour.Red);
+			gameBoard.DropDisc(4, DiscColour.Red);
+			gameBoard.DropDisc(5, DiscColour.Red);
 
-			board.DropDisc(5, DiscColour.Yellow);
+			gameBoard.DropDisc(5, DiscColour.Yellow);
 
-			Assert.IsFalse(board.HasConnectFour());
+			Assert.IsFalse(gameBoard.HasConnectFour());
 		}
 
 		/*
@@ -121,27 +121,27 @@ namespace ConnectFour.Tests
 		[Test]
 		public void HasConnectFour_FourDiagonalBottomLeftToTopRight_ReturnsTrue()
 		{
-			board.DropDisc(1, DiscColour.Yellow);
-			board.DropDisc(2, DiscColour.Yellow);
-			board.DropDisc(3, DiscColour.Red);
-			board.DropDisc(4, DiscColour.Yellow);
-			board.DropDisc(5, DiscColour.Red);
+			gameBoard.DropDisc(1, DiscColour.Yellow);
+			gameBoard.DropDisc(2, DiscColour.Yellow);
+			gameBoard.DropDisc(3, DiscColour.Red);
+			gameBoard.DropDisc(4, DiscColour.Yellow);
+			gameBoard.DropDisc(5, DiscColour.Red);
 
-			board.DropDisc(2, DiscColour.Red);
-			board.DropDisc(3, DiscColour.Yellow);
-			board.DropDisc(4, DiscColour.Red);
-			board.DropDisc(5, DiscColour.Yellow);
+			gameBoard.DropDisc(2, DiscColour.Red);
+			gameBoard.DropDisc(3, DiscColour.Yellow);
+			gameBoard.DropDisc(4, DiscColour.Red);
+			gameBoard.DropDisc(5, DiscColour.Yellow);
 
-			board.DropDisc(3, DiscColour.Red);
-			board.DropDisc(4, DiscColour.Red);
-			board.DropDisc(5, DiscColour.Yellow);
+			gameBoard.DropDisc(3, DiscColour.Red);
+			gameBoard.DropDisc(4, DiscColour.Red);
+			gameBoard.DropDisc(5, DiscColour.Yellow);
 
-			board.DropDisc(4, DiscColour.Red);
-			board.DropDisc(5, DiscColour.Yellow);
+			gameBoard.DropDisc(4, DiscColour.Red);
+			gameBoard.DropDisc(5, DiscColour.Yellow);
 
-			board.DropDisc(5, DiscColour.Yellow);
+			gameBoard.DropDisc(5, DiscColour.Yellow);
 
-			Assert.IsTrue(board.HasConnectFour());
+			Assert.IsTrue(gameBoard.HasConnectFour());
 		}
 
 		/*
@@ -154,19 +154,19 @@ namespace ConnectFour.Tests
 		[Test]
 		public void HasConnectFour_ThreeDiagonalBottomRightToTopLeft_ReturnsFalse()
 		{
-			board.DropDisc(1, DiscColour.Yellow);
-			board.DropDisc(2, DiscColour.Yellow);
-			board.DropDisc(3, DiscColour.Red);
-			board.DropDisc(4, DiscColour.Yellow);
+			gameBoard.DropDisc(1, DiscColour.Yellow);
+			gameBoard.DropDisc(2, DiscColour.Yellow);
+			gameBoard.DropDisc(3, DiscColour.Red);
+			gameBoard.DropDisc(4, DiscColour.Yellow);
 
-			board.DropDisc(1, DiscColour.Red);
-			board.DropDisc(2, DiscColour.Red);
-			board.DropDisc(3, DiscColour.Yellow);
+			gameBoard.DropDisc(1, DiscColour.Red);
+			gameBoard.DropDisc(2, DiscColour.Red);
+			gameBoard.DropDisc(3, DiscColour.Yellow);
 
-			board.DropDisc(1, DiscColour.Yellow);
-			board.DropDisc(2, DiscColour.Yellow);
+			gameBoard.DropDisc(1, DiscColour.Yellow);
+			gameBoard.DropDisc(2, DiscColour.Yellow);
 
-			Assert.IsFalse(board.HasConnectFour());
+			Assert.IsFalse(gameBoard.HasConnectFour());
 		}
 
 		/*
@@ -179,21 +179,21 @@ namespace ConnectFour.Tests
 		[Test]
 		public void HasConnectFour_FourDiagonalBottomRightToTopLeft_ReturnsTrue()
 		{
-			board.DropDisc(1, DiscColour.Yellow);
-			board.DropDisc(2, DiscColour.Yellow);
-			board.DropDisc(3, DiscColour.Red);
-			board.DropDisc(4, DiscColour.Yellow);
+			gameBoard.DropDisc(1, DiscColour.Yellow);
+			gameBoard.DropDisc(2, DiscColour.Yellow);
+			gameBoard.DropDisc(3, DiscColour.Red);
+			gameBoard.DropDisc(4, DiscColour.Yellow);
 
-			board.DropDisc(1, DiscColour.Red);
-			board.DropDisc(2, DiscColour.Red);
-			board.DropDisc(3, DiscColour.Yellow);
+			gameBoard.DropDisc(1, DiscColour.Red);
+			gameBoard.DropDisc(2, DiscColour.Red);
+			gameBoard.DropDisc(3, DiscColour.Yellow);
 
-			board.DropDisc(1, DiscColour.Yellow);
-			board.DropDisc(2, DiscColour.Yellow);
+			gameBoard.DropDisc(1, DiscColour.Yellow);
+			gameBoard.DropDisc(2, DiscColour.Yellow);
 
-			board.DropDisc(1, DiscColour.Yellow);
+			gameBoard.DropDisc(1, DiscColour.Yellow);
 
-			Assert.IsTrue(board.HasConnectFour());
+			Assert.IsTrue(gameBoard.HasConnectFour());
 		}
     }
 }

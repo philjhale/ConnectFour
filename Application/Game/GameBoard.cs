@@ -4,7 +4,7 @@ using ConnectFour.Application.Game.Solver;
 
 namespace ConnectFour.Application.Game
 {
-	public class Board
+	public class GameBoard
 	{
 		// Think of the grid like a graph with 0, 0 at the bottom left and TotalColumns (x), TotalColumns (y) at the top right
 		private readonly DiscColour[,] grid;
@@ -12,12 +12,14 @@ namespace ConnectFour.Application.Game
 		private int lastDroppedX = -1;
 		private int lastDroppedY = -1;
 
-		public Board()
+		public GameBoard(int numberOfColumns, int numberOfRows)
 		{
+			if (numberOfColumns < 4) throw new ArgumentException("You need at least four columns", "numberOfColumns");
+			if (numberOfRows < 4) throw new ArgumentException("You need at least four rows", "numberOfRows");
+
 			solver = new GenericSequenceConnectFourSolver(this);
-			// Hard coded for now but could be passed in
-			TotalRows = 7;
-			TotalColumns = 6;
+			TotalRows = numberOfRows;
+			TotalColumns = numberOfColumns;
 			grid = new DiscColour[TotalColumns, TotalRows]; 
 
 			SetAllToNone();

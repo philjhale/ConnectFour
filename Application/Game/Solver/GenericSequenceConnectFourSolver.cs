@@ -6,11 +6,11 @@ namespace ConnectFour.Application.Game.Solver
 {
 	public class GenericSequenceConnectFourSolver : IConnectFourSolver
 	{
-		private readonly Board board;
+		private readonly GameBoard gameBoard;
 
-		public GenericSequenceConnectFourSolver(Board board)
+		public GenericSequenceConnectFourSolver(GameBoard gameBoard)
 		{
-			this.board = board;
+			this.gameBoard = gameBoard;
 		}
 
 		public bool HasConnectFour(int lastDropPositionX, int lastDropPositionY)
@@ -55,7 +55,7 @@ namespace ConnectFour.Application.Game.Solver
 
 			while(IsInBoundsOfGrid(currentPosition))
 			{
-				var thisColour = board.GetDiscAt(currentPosition.X, currentPosition.Y);
+				var thisColour = gameBoard.GetDiscAt(currentPosition.X, currentPosition.Y);
 
 				// First in sequence found
 				if(firstColour == DiscColour.None && thisColour != DiscColour.None)
@@ -86,8 +86,8 @@ namespace ConnectFour.Application.Game.Solver
 
 		private bool IsInBoundsOfGrid(GridPoint currentPosition)
 		{
-			return currentPosition.X <= board.TotalColumns && currentPosition.X > 0 
-			       && currentPosition.Y <= board.TotalRows && currentPosition.Y > 0;
+			return currentPosition.X <= gameBoard.TotalColumns && currentPosition.X > 0 
+			       && currentPosition.Y <= gameBoard.TotalRows && currentPosition.Y > 0;
 		}
 
 		private GridPoint FindFirstPointInLine(Func<GridPoint, GridPoint> nextInSequence, int currentX, int currentY)

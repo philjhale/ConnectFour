@@ -1,5 +1,5 @@
-﻿using ConnectFour.Application.Game;
-using ConnectFour.Application.Views;
+﻿using ConnectFour.Application;
+using ConnectFour.Application.Game;
 
 namespace ConnectFour.Console
 {
@@ -7,11 +7,16 @@ namespace ConnectFour.Console
 	{
 		static void Main(string[] args)
 		{
-			var board = new Board();
-			var boardView = new ConsoleBoardView(board);
-			var gameController = new GameController(boardView, board);
+			var gameSettings = new GameSettings(
+				numberOfColumns: 6, 
+				numberOfRows: 7, 
+				playerOne: new ConsolePlayer("Console player", DiscColour.Red),
+				playerTwo: new AutomatedPlayer("Dr Robotnic", DiscColour.Yellow)
+			);
 
-			gameController.Play();
+			var game = GameBuilder.Build(gameSettings);
+
+			game.Play();
 
 			System.Console.ReadKey();
 		}

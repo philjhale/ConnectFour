@@ -2,11 +2,11 @@
 {
 	public class SimpleLoopConnectFourSolver : IConnectFourSolver
 	{
-		private readonly Board board;
+		private readonly GameBoard gameBoard;
 
-		public SimpleLoopConnectFourSolver(Board board)
+		public SimpleLoopConnectFourSolver(GameBoard gameBoard)
 		{
-			this.board = board;
+			this.gameBoard = gameBoard;
 		}
 
 		public bool HasConnectFour(int lastDropPositionX, int lastDropPositionY)
@@ -28,15 +28,15 @@
 
 		private bool HasVerticalConnectFourFromPosition(int columnToSearch)
 		{
-			DiscColour firstColour = board.GetDiscAt(columnToSearch, 1);
+			DiscColour firstColour = gameBoard.GetDiscAt(columnToSearch, 1);
 
 			if (firstColour == DiscColour.None)
 				return false;
 
 			int adjacentSameColourCount = 1;
-			for(int y = 2; y <= board.TotalRows; y++)
+			for(int y = 2; y <= gameBoard.TotalRows; y++)
 			{
-				var thisColour = board.GetDiscAt(columnToSearch, y);
+				var thisColour = gameBoard.GetDiscAt(columnToSearch, y);
 
 				if (firstColour == thisColour && thisColour != DiscColour.None)
 				{
@@ -64,14 +64,14 @@
 			do
 			{
 				firstColourPosition++;
-				firstColour = board.GetDiscAt(firstColourPosition, rowToSearch);
-			} while (firstColour == DiscColour.None && firstColourPosition <= board.TotalColumns);
+				firstColour = gameBoard.GetDiscAt(firstColourPosition, rowToSearch);
+			} while (firstColour == DiscColour.None && firstColourPosition <= gameBoard.TotalColumns);
 
 			// Look for four in a row
 			int adjacentSameColourCount = 1;
-			for(int x = firstColourPosition + 1; x <= board.TotalColumns; x++)
+			for(int x = firstColourPosition + 1; x <= gameBoard.TotalColumns; x++)
 			{
-				var thisColour = board.GetDiscAt(x, rowToSearch);
+				var thisColour = gameBoard.GetDiscAt(x, rowToSearch);
 
 				if (firstColour == thisColour && thisColour != DiscColour.None)
 				{
