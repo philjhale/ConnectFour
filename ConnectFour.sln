@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectFour.Application", "Application\ConnectFour.Application.csproj", "{55DCC8E7-19E7-4058-97B4-CB01BB0956B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectFour.Tests", "Tests\ConnectFour.Tests.csproj", "{433CE4C9-86B7-429E-86F8-3A9293C4B34C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectFour.Console", "Console\ConnectFour.Console.csproj", "{0E9F7C6E-4D2A-4AFC-890D-556DBDD904C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55DCC8E7-19E7-4058-97B4-CB01BB0956B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55DCC8E7-19E7-4058-97B4-CB01BB0956B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55DCC8E7-19E7-4058-97B4-CB01BB0956B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55DCC8E7-19E7-4058-97B4-CB01BB0956B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{433CE4C9-86B7-429E-86F8-3A9293C4B34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{433CE4C9-86B7-429E-86F8-3A9293C4B34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{433CE4C9-86B7-429E-86F8-3A9293C4B34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{433CE4C9-86B7-429E-86F8-3A9293C4B34C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E9F7C6E-4D2A-4AFC-890D-556DBDD904C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E9F7C6E-4D2A-4AFC-890D-556DBDD904C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E9F7C6E-4D2A-4AFC-890D-556DBDD904C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E9F7C6E-4D2A-4AFC-890D-556DBDD904C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
