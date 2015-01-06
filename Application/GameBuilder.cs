@@ -1,17 +1,32 @@
-﻿using ConnectFour.Application.Game;
-using ConnectFour.Application.Views;
+﻿using ConnectFour.Application.Views;
 
 namespace ConnectFour.Application
 {
 	public class GameBuilder
 	{
-		public static Game.Game Build(GameSettings settings)
-		{
-			var board = new GameBoard(settings.NumberOfColumns, settings.NumberOfRows);
-			var boardView = new ConsoleGameBoardView(board);
-			var game = new Game.Game(boardView, board, settings.Players);
+		private IGameBoardView gameBoardView;
+		private readonly GameSettings settings;
 
-			return game;
+		public GameBuilder(GameSettings settings)
+		{
+			this.settings = settings;
+		}
+
+		public GameBuilder WithView(IGameBoardView gameBoardView)
+		{
+			this.gameBoardView = gameBoardView;
+
+			return this;
+		}
+
+		public Game Build()
+		{
+			var gameBoard = new GameBoard(settings.NumberOfColumns, settings.NumberOfRows);
+			
+			if (gameBoardView == null)
+				gameBoardView = new ConsoleGameBoardView();
+
+			return new Game(gameBoardView, gameBoard, settings.Players);
 		}
 	}
 }

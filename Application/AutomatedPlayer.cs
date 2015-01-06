@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConnectFour.Application.Game
+namespace ConnectFour.Application
 {
 	public class AutomatedPlayer : Player
 	{

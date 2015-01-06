@@ -1,5 +1,4 @@
 ﻿using ConnectFour.Application;
-using ConnectFour.Application.Game;
 
 namespace ConnectFour.Console
 {
@@ -14,9 +13,7 @@ namespace ConnectFour.Console
 				playerTwo: new AutomatedPlayer("Dr Robotnic", DiscColour.Yellow)
 			);
 
-			var game = GameBuilder.Build(gameSettings);
-
-			game.Play();
+			new GameBuilder(gameSettings).Build().Play();
 
 			System.Console.ReadKey();
 		}

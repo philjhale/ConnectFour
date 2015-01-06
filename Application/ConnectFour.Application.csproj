@@ -39,22 +39,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutomatedPlayer.cs" />
+    <Compile Include="ConsolePlayer.cs" />
+    <Compile Include="DiscColour.cs" />
     <Compile Include="Exceptions\DiscCannotBeDroppedException.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="GameBoard.cs" />
     <Compile Include="GameBuilder.cs" />
-    <Compile Include="Game\AutomatedPlayer.cs" />
-    <Compile Include="Game\GameBoard.cs" />
-    <Compile Include="Game\ConsolePlayer.cs" />
-    <Compile Include="Game\DiscColour.cs" />
-    <Compile Include="Game\Game.cs" />
-    <Compile Include="Game\GameSettings.cs" />
-    <Compile Include="Game\IPlayerInput.cs" />
-    <Compile Include="Game\Player.cs" />
-    <Compile Include="Game\PlayerInputValidator.cs" />
-    <Compile Include="Game\Players.cs" />
-    <Compile Include="Game\Solver\GenericSequenceConnectFourSolver.cs" />
-    <Compile Include="Game\Solver\IConnectFourSolver.cs" />
-    <Compile Include="Game\Solver\SimpleLoopConnectFourSolver.cs" />
+    <Compile Include="GameSettings.cs" />
+    <Compile Include="IPlayerInput.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="PlayerInputValidator.cs" />
+    <Compile Include="Players.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Solver\GenericSequenceConnectFourSolver.cs" />
+    <Compile Include="Solver\IConnectFourSolver.cs" />
+    <Compile Include="Solver\SimpleLoopConnectFourSolver.cs" />
     <Compile Include="Views\ConsoleGameBoardView.cs" />
     <Compile Include="Views\IGameBoardView.cs" />
   </ItemGroup>

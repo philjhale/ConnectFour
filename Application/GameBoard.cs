@@ -1,8 +1,8 @@
 ﻿using System;
 using ConnectFour.Application.Exceptions;
-using ConnectFour.Application.Game.Solver;
+using ConnectFour.Application.Solver;
 
-namespace ConnectFour.Application.Game
+namespace ConnectFour.Application
 {
 	public class GameBoard
 	{

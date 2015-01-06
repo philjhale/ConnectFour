@@ -1,23 +1,15 @@
 ﻿using System;
-using ConnectFour.Application.Game;
 
 namespace ConnectFour.Application.Views
 {
 	public class ConsoleGameBoardView : IGameBoardView
 	{
-		private readonly GameBoard gameBoard;
-
-		public ConsoleGameBoardView(GameBoard gameBoard)
-		{
-			this.gameBoard = gameBoard;
-		}
-
 		public void ShowMessage(string message)
 		{
 			Console.WriteLine(message);
 		}
 
-		public void Refresh()
+		public void Refresh(GameBoard gameBoard)
 		{
 			for(int x = 1; x <= gameBoard.TotalColumns ; x++)
 			{
