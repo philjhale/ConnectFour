@@ -1,4 +1,4 @@
-﻿using ConnectFour.Application.Game;
+﻿using ConnectFour.Application;
 using NUnit.Framework;
 
 namespace ConnectFour.Tests

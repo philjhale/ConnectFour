@@ -1,4 +1,4 @@
-﻿namespace ConnectFour.Application.Game.Solver
+﻿namespace ConnectFour.Application.Solver
 {
 	public interface IConnectFourSolver
 	{

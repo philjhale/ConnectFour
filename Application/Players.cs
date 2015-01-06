@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace ConnectFour.Application.Game
+namespace ConnectFour.Application
 {
 	public class Players : IEnumerable<Player>
 	{

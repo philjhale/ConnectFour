@@ -1,4 +1,4 @@
-﻿namespace ConnectFour.Application.Game
+﻿namespace ConnectFour.Application
 {
 	public interface IPlayerInput
 	{

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ConnectFour.Application.Game.Solver
+namespace ConnectFour.Application.Solver
 {
 	public class GenericSequenceConnectFourSolver : IConnectFourSolver
 	{
