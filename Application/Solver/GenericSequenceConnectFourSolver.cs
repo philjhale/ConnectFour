@@ -72,9 +72,7 @@ namespace ConnectFour.Application.Solver
 			var colours = new List<DiscColour>();
 
 			foreach(var point in nextFourPoints)
-			{
 				colours.Add(gameBoard.GetDiscAt(point.X, point.Y));
-			}
 
 			return colours.All(x => x == DiscColour.Red) 
 				|| colours.All(x => x == DiscColour.Yellow); 
@@ -82,9 +80,8 @@ namespace ConnectFour.Application.Solver
 
 		private List<GridPoint> GetNextFourInSequence(GridPoint currentPoint, Func<GridPoint, GridPoint> getNextPointInSequence)
 		{
-			var points = new List<GridPoint>();
+			var points = new List<GridPoint> {currentPoint};
 
-			points.Add(currentPoint);
 			for(int i = 0; i < 3; i++)
 			{
 				currentPoint = getNextPointInSequence.Invoke(currentPoint);
