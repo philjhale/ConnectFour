@@ -53,7 +53,10 @@
     <Compile Include="Players.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Solver\GenericSequenceConnectFourSolver.cs" />
+    <Compile Include="Solver\GridSequence.cs" />
+    <Compile Include="Solver\GridPoint.cs" />
     <Compile Include="Solver\IConnectFourSolver.cs" />
+    <Compile Include="Solver\SequenceDirection.cs" />
     <Compile Include="Solver\SimpleLoopConnectFourSolver.cs" />
     <Compile Include="Views\ConsoleGameBoardView.cs" />
     <Compile Include="Views\IGameBoardView.cs" />

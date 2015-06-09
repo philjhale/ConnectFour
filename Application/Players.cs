@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace ConnectFour.Application
 {
-	public class Players : IEnumerable<Player>
+	public class Players
 	{
 		private readonly List<Player> players;
 		private int currentPlayerIndex;
@@ -15,16 +14,6 @@ namespace ConnectFour.Application
 
 			this.players = players;
 			currentPlayerIndex = -1;
-		}
-
-		public IEnumerator<Player> GetEnumerator()
-		{
-			return players.GetEnumerator();
-		}
-
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			return GetEnumerator();
 		}
 
 		public Player Next()

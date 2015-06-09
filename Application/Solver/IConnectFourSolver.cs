@@ -2,6 +2,6 @@
 {
 	public interface IConnectFourSolver
 	{
-		bool HasConnectFour(int lastDropPositionX, int lastDropPositionY);
+		bool HasConnectFour(int lastDropColumnNumber, int lastDropRowNumber);
 	}
 }
