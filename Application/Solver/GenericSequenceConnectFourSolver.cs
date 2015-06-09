@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace ConnectFour.Application.Solver
@@ -14,12 +13,12 @@ namespace ConnectFour.Application.Solver
 			this.gameBoard = gameBoard;
 		}
 
-		public bool HasConnectFour(int lastDropPositionX, int lastDropPositionY)
+		public bool HasConnectFour(int lastDropColumnNumber, int lastDropRowNumber)
 		{
-			List<Func<GridPoint, GridPoint>> searchDirections = new List<Func<GridPoint, GridPoint>>() { GoUp, GoRight, GoUpRight, GoUpLeft };
+			List<SequenceDirection> searchDirections = new List<SequenceDirection>() { SequenceDirection.Up(), SequenceDirection.Right(), SequenceDirection.UpRight(), SequenceDirection.UpLeft() };
 
 			// This is the shortest version:
-			return searchDirections.Any(direction => HasFourAdjacentColours(lastDropPositionX, lastDropPositionY, direction));
+			return searchDirections.Any(direction => HasFourAdjacentColours(lastDropColumnNumber, lastDropRowNumber, direction));
 
 			// Or like this:
 			//foreach (var sequence in searchDirections)
@@ -28,7 +27,6 @@ namespace ConnectFour.Application.Solver
 			//		return true;
 			//}
 
-			
 			// This is possibly the easiest to read:
 			//// Search vertical
 			//if (HasFourAdjacentColoursInLine(lastDropPositionX, lastDropPositionY, GoUp))
@@ -48,20 +46,14 @@ namespace ConnectFour.Application.Solver
 			//return false;
 		}
 
-		private bool HasFourAdjacentColours(int currentX, int currentY, Func<GridPoint, GridPoint> getNextPointInSequence)
+		private bool HasFourAdjacentColours(int currentColumnNumber, int currentRowNumber, SequenceDirection direction)
 		{
-			GridPoint startOfSequence = GetFirstPointInSequence(getNextPointInSequence, currentX, currentY);
+			GridSequence sequence = new GridSequence(gameBoard, direction, new GridPoint(currentColumnNumber - 1, currentRowNumber - 1));
 
-			var currentPosition = startOfSequence;
-			var nextFourPoints = GetNextFourInSequence(currentPosition, getNextPointInSequence);
-
-			while(IsInBoundsOfBoard(nextFourPoints.Last()))
+			foreach (var nextFourGridPoints in sequence.GetNextFourPoints())
 			{
-				if (NextFourPointsAreSameColour(nextFourPoints))
+				if (NextFourPointsAreSameColour(nextFourGridPoints))
 					return true;
-
-				currentPosition = getNextPointInSequence.Invoke(currentPosition);
-				nextFourPoints = GetNextFourInSequence(currentPosition, getNextPointInSequence);
 			}
 			
 			return false;
@@ -72,84 +64,10 @@ namespace ConnectFour.Application.Solver
 			var colours = new List<DiscColour>();
 
 			foreach(var point in nextFourPoints)
-				colours.Add(gameBoard.GetDiscAt(point.X, point.Y));
+				colours.Add(gameBoard.GetDiscAt(point.X + 1, point.Y + 1));
 
 			return colours.All(x => x == DiscColour.Red) 
 				|| colours.All(x => x == DiscColour.Yellow); 
-		}
-
-		private List<GridPoint> GetNextFourInSequence(GridPoint currentPoint, Func<GridPoint, GridPoint> getNextPointInSequence)
-		{
-			var points = new List<GridPoint> {currentPoint};
-
-			for(int i = 0; i < 3; i++)
-			{
-				currentPoint = getNextPointInSequence.Invoke(currentPoint);
-				points.Add(currentPoint);
-			}
-
-			return points;
-		}
-
-		private bool IsInBoundsOfBoard(GridPoint currentPosition)
-		{
-			return currentPosition.X <= gameBoard.TotalColumns && currentPosition.X > 0 
-			       && currentPosition.Y <= gameBoard.TotalRows && currentPosition.Y > 0;
-		}
-
-		private GridPoint GetFirstPointInSequence(Func<GridPoint, GridPoint> getNextPointInSequence, int currentX, int currentY)
-		{
-			GridPoint forwardDirection = getNextPointInSequence.Invoke(new GridPoint(0, 0));
-			GridPoint reverseDirection = ReverseSequence(forwardDirection);
-			GridPoint currentPointInSequence = new GridPoint(currentX, currentY);
-			GridPoint previousPoint = currentPointInSequence;
-
-			// Work backwards from the current point
-			while (IsInBoundsOfBoard(previousPoint))
-			{
-				currentPointInSequence = previousPoint;
-				previousPoint = new GridPoint(currentPointInSequence.X + reverseDirection.X, currentPointInSequence.Y + reverseDirection.Y);
-			}
-
-			return currentPointInSequence;
-		}
-
-		private GridPoint GoUp(GridPoint currentPoint)
-		{
-			return new GridPoint(currentPoint.X, currentPoint.Y + 1);
-		}
-
-		private GridPoint GoRight(GridPoint currentPoint)
-		{
-			return new GridPoint(currentPoint.X + 1, currentPoint.Y);
-		}
-
-		private GridPoint GoUpRight(GridPoint currentPoint)
-		{
-			return new GridPoint(currentPoint.X + 1, currentPoint.Y + 1);
-		}
-
-		private GridPoint GoUpLeft(GridPoint currentPoint)
-		{
-			return new GridPoint(currentPoint.X - 1, currentPoint.Y + 1);
-		}
-
-		private GridPoint ReverseSequence(GridPoint nextInSequence)
-		{
-			return new GridPoint(-nextInSequence.X, -nextInSequence.Y);
-		}
-	}
-
-	[DebuggerDisplay("X = {X}, Y = {Y}")]
-	class GridPoint
-	{
-		public int X { get; private set; }
-		public int Y { get; private set; }
-
-		public GridPoint(int x, int y)
-		{
-			X = x;
-			Y = y;
 		}
 	}
 }
