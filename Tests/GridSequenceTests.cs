@@ -24,7 +24,7 @@ namespace ConnectFour.Tests
 			board.DropDisc(2, DiscColour.Red);
 			board.DropDisc(3, DiscColour.Red);
 			board.DropDisc(4, DiscColour.Red);
-			var sequence = new GridSequence(board, SequenceDirection.Right(), new GridPoint(0, 0));
+			var sequence = new GridPointSequence(board, SequenceDirection.Right(), new GridPoint(0, 0));
 
 			var nextFour = sequence.GetNextFourPoints().GetEnumerator();
 			nextFour.MoveNext();
@@ -41,7 +41,7 @@ namespace ConnectFour.Tests
 			board.DropDisc(1, DiscColour.Red);
 			board.DropDisc(1, DiscColour.Red);
 			board.DropDisc(1, DiscColour.Red);
-			var sequence = new GridSequence(board, SequenceDirection.Up(), new GridPoint(0, 0));
+			var sequence = new GridPointSequence(board, SequenceDirection.Up(), new GridPoint(0, 0));
 
 			var nextFour = sequence.GetNextFourPoints().GetEnumerator();
 			nextFour.MoveNext();

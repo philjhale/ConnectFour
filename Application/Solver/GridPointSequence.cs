@@ -3,25 +3,25 @@ using System.Linq;
 
 namespace ConnectFour.Application.Solver
 {
-	public class GridSequence
+	public class GridPointSequence
 	{
-		private readonly List<GridPoint> gridSequence;
+		private readonly List<GridPoint> gridPoints;
 		private readonly GameBoard gameBoard;
 		private readonly SequenceDirection forwardDirection;
 
-		public GridSequence(GameBoard gameBoard, SequenceDirection forwardDirection, GridPoint currentPoint)
+		public GridPointSequence(GameBoard gameBoard, SequenceDirection forwardDirection, GridPoint currentPoint)
 		{
 			this.gameBoard = gameBoard;
 			this.forwardDirection = forwardDirection;
 
-			gridSequence = GetSequence(currentPoint);
+			gridPoints = GetSequence(currentPoint);
 		}
 
 		public IEnumerable<List<GridPoint>> GetNextFourPoints()
 		{
-			for(int i = 4; i <= gridSequence.Count; i++)
+			for(int i = 4; i <= gridPoints.Count; i++)
 			{
-				yield return gridSequence.GetRange(i - 4, 4);
+				yield return gridPoints.GetRange(i - 4, 4);
 			}
 		}
 

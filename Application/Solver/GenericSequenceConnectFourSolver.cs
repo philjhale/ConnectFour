@@ -48,9 +48,9 @@ namespace ConnectFour.Application.Solver
 
 		private bool HasFourAdjacentColours(int currentColumnNumber, int currentRowNumber, SequenceDirection direction)
 		{
-			GridSequence sequence = new GridSequence(gameBoard, direction, new GridPoint(currentColumnNumber - 1, currentRowNumber - 1));
+			GridPointSequence pointSequence = new GridPointSequence(gameBoard, direction, new GridPoint(currentColumnNumber - 1, currentRowNumber - 1));
 
-			foreach (var nextFourGridPoints in sequence.GetNextFourPoints())
+			foreach (var nextFourGridPoints in pointSequence.GetNextFourPoints())
 			{
 				if (NextFourPointsAreSameColour(nextFourGridPoints))
 					return true;
