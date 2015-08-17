@@ -11,9 +11,6 @@
 			DiscColour      = discColour;
 		}
 
-		public virtual string GetDropColumnInput()
-		{
-			throw new System.NotImplementedException("Implement in derived class");
-		}
+        public abstract string GetDropColumnInput();
 	}
 }
